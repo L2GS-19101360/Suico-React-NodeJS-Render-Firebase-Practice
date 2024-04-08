@@ -1,0 +1,85 @@
+import React, { Component } from "react";
+import ClockComponent from "../components/ClockComponent";
+import { Navbar, Container, Nav, Button, NavDropdown, Form } from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+
+class LoginPage extends Component {
+
+    constructor() {
+        super();
+        this.toRegisterPage = this.toRegisterPage.bind(this);
+        this.togglePasswordVisibility = this.togglePasswordVisibility.bind(this);
+        this.state = {
+            showPassword: false
+        }
+    }
+
+    componentDidMount() {
+
+    }
+    componentWillUnmount() {
+
+    }
+
+    toRegisterPage() {
+        this.props.history.push('RegisterPage');
+    }
+
+    togglePasswordVisibility() {
+        this.setState(prevState => ({
+            showPassword: !prevState.showPassword
+        }));
+    }
+
+    render() {
+        return (
+            <div>
+                <Navbar expand="lg" className="bg-body-tertiary">
+                    <Container>
+                        <Navbar.Brand>L2GS Website</Navbar.Brand>
+                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                        <Navbar.Collapse id="basic-navbar-nav" className="justify-content-between">
+                            <Nav>
+                                <Nav.Link href="/">Home</Nav.Link>
+                            </Nav>
+                            <Nav>
+                                <ClockComponent />
+                            </Nav>
+                            <Nav>
+                                <Nav.Item>
+                                    <Nav.Link><Button variant="secondary" disabled>Login Account</Button></Nav.Link>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <Nav.Link><Button variant="primary" onClick={this.toRegisterPage}>Register Account</Button></Nav.Link>
+                                </Nav.Item>
+                            </Nav>
+                        </Navbar.Collapse>
+                    </Container>
+                </Navbar>
+                <div style={{ padding: "3%" }}>
+                    <h1>Login Account Page</h1>
+                    <div style={{ width: "35%", height: "50%", backgroundColor: "white", padding: "3%", textAlign: "center" }}>
+                        <Form>
+                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                <Form.Label>Email Address</Form.Label>
+                                <Form.Control type="email" placeholder="Enter Email Address" />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                <Form.Label>Password</Form.Label><br />
+                                <span style={{ alignItems: "center", display: "inline-flex", width: "100%" }}>
+                                    <Form.Control type={this.state.showPassword ? "text" : "password"} placeholder="Enter Password" />
+                                    <FontAwesomeIcon icon={this.state.showPassword ? faEyeSlash : faEye} style={{ fontSize: "20px", padding: "2%", cursor: "pointer" }} onClick={this.togglePasswordVisibility} />
+                                </span>
+                            </Form.Group><br /><br /><br />
+                            <Button variant="secondary">Login Account</Button>
+                        </Form>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+}
+
+export default LoginPage
