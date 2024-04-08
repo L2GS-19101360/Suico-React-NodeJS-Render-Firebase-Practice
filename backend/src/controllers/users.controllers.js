@@ -8,6 +8,16 @@ const UserController = {
         } catch (error) {
             res.status(500).json({ error: error.message });
         }
+    },
+
+    createUser: async (req, res) => {
+        try {
+            const userData = req.body;
+            await User.createUser(userData);
+            res.status(201).json({ message: 'User Created' });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
     }
 };
 
