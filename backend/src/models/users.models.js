@@ -28,6 +28,10 @@ const User = {
         };
         
         return db.collection("Users").doc(data.id.toString()).set(data);
+    },
+
+    loginUser: async (loginData) => {
+
     }
 };
 
