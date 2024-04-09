@@ -22,7 +22,9 @@ const UserController = {
 
     loginUser: async (req, res) => {
         try {
-            
+            const loginData = req.body;
+            const user = await User.loginUser(loginData);
+            res.json({ user });
         } catch (error) {
             res.status(500).json({ error: error.message });
         }
