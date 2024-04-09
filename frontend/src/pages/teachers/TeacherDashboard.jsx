@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ClockComponent from "../../components/ClockComponent";
 import { Navbar, Container, Nav, Button, NavDropdown, Form } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import TeacherSidebar from '../../components/teachers/TeacherSidebar'
 
 class TeacherDashboard extends Component {
 
@@ -31,7 +32,7 @@ class TeacherDashboard extends Component {
                                 <ClockComponent />
                             </Nav>
                             <Nav>
-                                
+                                <TeacherSidebar />
                             </Nav>
                         </Navbar.Collapse>
                     </Container>

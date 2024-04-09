@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ClockComponent from "../../components/ClockComponent";
 import { Navbar, Container, Nav, Button, NavDropdown, Form } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import AdminSidebar from '../../components/admins/AdminSidebar'
 
 class AdminDashboard extends Component {
 
@@ -31,7 +32,7 @@ class AdminDashboard extends Component {
                                 <ClockComponent />
                             </Nav>
                             <Nav>
-                                
+                                <AdminSidebar />
                             </Nav>
                         </Navbar.Collapse>
                     </Container>
