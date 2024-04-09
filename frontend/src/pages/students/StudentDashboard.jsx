@@ -8,6 +8,10 @@ class StudentDashboard extends Component {
 
     constructor() {
         super();
+        this.state = {
+            LAfirstname: sessionStorage.getItem("firstname"),
+            LAlastname: sessionStorage.getItem("lastname")
+        }
     }
 
     componentDidMount() {
@@ -18,6 +22,8 @@ class StudentDashboard extends Component {
     }
 
     render() {
+        const profileImage = `https://ui-avatars.com/api/?name=${this.state.LAfirstname}+${this.state.LAlastname}&background=random`
+
         return (
             <div>
                 <Navbar expand="lg" className="bg-body-tertiary">
@@ -32,7 +38,7 @@ class StudentDashboard extends Component {
                                 <ClockComponent />
                             </Nav>
                             <Nav>
-                                
+                                <img src={profileImage} alt="" />
                             </Nav>
                         </Navbar.Collapse>
                     </Container>

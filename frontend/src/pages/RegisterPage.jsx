@@ -29,7 +29,7 @@ class RegisterPage extends Component {
     }
 
     componentDidMount() {
-        
+
     }
     componentWillUnmount() {
 
@@ -56,11 +56,39 @@ class RegisterPage extends Component {
         const email = this.state.newEmail + "@gmail.com"
 
         try {
-            const response = await axios.get('http://localhost:3000/api/users/');
+            const response = await axios.get('https://suico-react-nodejs-render-firebase-hj4t.onrender.com/api/users');
             this.setState({ newId: response.data.length + 1 }, () => {
                 if (this.state.newPassword === this.state.rePassword) {
                     console.log(this.state.newId + this.state.newFirstname + this.state.newLastname + email + this.state.newPassword);
-                     
+
+                    const data = {
+                        id: this.state.newId,
+                        firstname: this.state.newFirstname,
+                        lastname: this.state.newLastname,
+                        email: this.state.newEmail,
+                        password: this.state.newPassword,
+                        role: "student"
+                    }
+
+                    axios.post(
+                        'https://suico-react-nodejs-render-firebase-hj4t.onrender.com/api/users', data
+                    ).then(
+                        (response) => {
+                            console.log("Server Response", response.data);
+                        }
+                    ).catch(
+                        (error) => {
+                            console.log(error);
+                        }
+                    );
+
+                    sessionStorage.setItem("firstname", data.firstname);
+                    sessionStorage.setItem("lastname", data.lastname);
+                    sessionStorage.setItem("email", data.email);
+                    sessionStorage.setItem("password", data.password);
+                    sessionStorage.setItem("role", data.role);
+
+                    this.props.history.push('/StudentDashboard');
                 }
             });
         } catch (error) {
@@ -98,11 +126,11 @@ class RegisterPage extends Component {
                     <div style={{ width: "35%", height: "50%", backgroundColor: "white", padding: "3%", textAlign: "center" }}>
                         <Form>
                             <div style={{ alignItems: "center", display: "inline-flex", width: "100%" }}>
-                                
+
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                     <Form.Label>First Name</Form.Label>
-                                    <Form.Control 
-                                        type="text" 
+                                    <Form.Control
+                                        type="text"
                                         placeholder="Enter First Name"
                                         value={this.state.newFirstname}
                                         onChange={(e) => { this.setState({ newFirstname: e.target.value }) }} />
@@ -110,16 +138,16 @@ class RegisterPage extends Component {
 
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                     <Form.Label>Last Name</Form.Label>
-                                    <Form.Control 
-                                        type="text" 
+                                    <Form.Control
+                                        type="text"
                                         placeholder="Enter Last Name"
                                         value={this.state.newLastname}
-                                        onChange={(e) => { this.setState( { newLastname: e.target.value } ) }} />
+                                        onChange={(e) => { this.setState({ newLastname: e.target.value }) }} />
                                 </Form.Group>
 
                             </div>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                
+
                                 <Form.Label>Email Address</Form.Label>
                                 <InputGroup className="mb-3">
                                     <Form.Control
@@ -135,24 +163,24 @@ class RegisterPage extends Component {
 
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                
+
                                 <Form.Label>Password</Form.Label><br />
                                 <span style={{ alignItems: "center", display: "inline-flex", width: "100%" }}>
-                                    <Form.Control 
-                                        type={this.state.showPassword ? "text" : "password"} 
-                                        placeholder="Enter Password" 
+                                    <Form.Control
+                                        type={this.state.showPassword ? "text" : "password"}
+                                        placeholder="Enter Password"
                                         value={this.state.newPassword}
-                                        onChange={(e) => { this.setState({ newPassword: e.target.value }) }}/>
+                                        onChange={(e) => { this.setState({ newPassword: e.target.value }) }} />
                                     <FontAwesomeIcon icon={this.state.showPassword ? faEyeSlash : faEye} style={{ fontSize: "20px", padding: "2%", cursor: "pointer" }} onClick={this.togglePasswordVisibility} />
                                 </span>
 
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                
+
                                 <Form.Label>Re-Enter Password</Form.Label><br />
                                 <span style={{ alignItems: "center", display: "inline-flex", width: "100%" }}>
-                                    <Form.Control 
-                                        type={this.state.reshowPassword ? "text" : "password"} 
+                                    <Form.Control
+                                        type={this.state.reshowPassword ? "text" : "password"}
                                         placeholder="Re-Enter Password"
                                         value={this.state.rePassword}
                                         onChange={(e) => { this.setState({ rePassword: e.target.value }) }} />
