@@ -3,6 +3,7 @@ import ClockComponent from "../components/ClockComponent";
 import { Navbar, Container, Nav, Button, NavDropdown, Form } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import axios from "axios";
 
 class LoginPage extends Component {
 
@@ -42,7 +43,47 @@ class LoginPage extends Component {
         console.log(this.state.enterEmail + this.state.enterPassword);
 
         try {
-            
+            const data = {
+                email: this.state.enterEmail,
+                password: this.state.enterPassword
+            }
+            axios.post(
+                'https://suico-react-nodejs-render-firebase-hj4t.onrender.com/api/users/loginUser', data
+            ).then(
+                (response) => {
+                    console.log("Server Response", response.data.user);
+
+                    if (response.data.user.role === "student") {
+                        sessionStorage.setItem("firstname", response.data.user.firstname);
+                        sessionStorage.setItem("lastname", response.data.user.lastname);
+                        sessionStorage.setItem("email", response.data.user.email);
+                        sessionStorage.setItem("password", response.data.user.password);
+                        sessionStorage.setItem("role", response.data.user.role);
+
+                        this.props.history.push('/StudentDashboard');
+                    } else if (response.data.user.role === "teacher") {
+                        sessionStorage.setItem("firstname", response.data.user.firstname);
+                        sessionStorage.setItem("lastname", response.data.user.lastname);
+                        sessionStorage.setItem("email", response.data.user.email);
+                        sessionStorage.setItem("password", response.data.user.password);
+                        sessionStorage.setItem("role", response.data.user.role);
+
+                        this.props.history.push('/TeacherDashboard');
+                    } else {
+                        sessionStorage.setItem("firstname", response.data.user.firstname);
+                        sessionStorage.setItem("lastname", response.data.user.lastname);
+                        sessionStorage.setItem("email", response.data.user.email);
+                        sessionStorage.setItem("password", response.data.user.password);
+                        sessionStorage.setItem("role", response.data.user.role);
+
+                        this.props.history.push('/AdminDashboard');
+                    }
+                }
+            ).catch(
+                (error) => {
+                    console.log(error);
+                }
+            );
         } catch (error) {
             console.log(error);
         }

@@ -65,30 +65,30 @@ class RegisterPage extends Component {
                         id: this.state.newId,
                         firstname: this.state.newFirstname,
                         lastname: this.state.newLastname,
-                        email: this.state.newEmail,
+                        email: email,
                         password: this.state.newPassword,
                         role: "student"
                     }
 
                     axios.post(
-                        'https://suico-react-nodejs-render-firebase-hj4t.onrender.com/api/users', data
+                        'https://suico-react-nodejs-render-firebase-hj4t.onrender.com/api/users/registerUser', data
                     ).then(
                         (response) => {
                             console.log("Server Response", response.data);
+
+                            sessionStorage.setItem("firstname", data.firstname);
+                            sessionStorage.setItem("lastname", data.lastname);
+                            sessionStorage.setItem("email", data.email);
+                            sessionStorage.setItem("password", data.password);
+                            sessionStorage.setItem("role", data.role);
+
+                            this.props.history.push('/StudentDashboard');
                         }
                     ).catch(
                         (error) => {
                             console.log(error);
                         }
                     );
-
-                    sessionStorage.setItem("firstname", data.firstname);
-                    sessionStorage.setItem("lastname", data.lastname);
-                    sessionStorage.setItem("email", data.email);
-                    sessionStorage.setItem("password", data.password);
-                    sessionStorage.setItem("role", data.role);
-
-                    this.props.history.push('/StudentDashboard');
                 }
             });
         } catch (error) {
