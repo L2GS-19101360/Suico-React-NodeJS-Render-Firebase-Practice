@@ -10,8 +10,12 @@ class LoginPage extends Component {
         super();
         this.toRegisterPage = this.toRegisterPage.bind(this);
         this.togglePasswordVisibility = this.togglePasswordVisibility.bind(this);
+        this.loginUsers = this.loginUsers.bind(this)
         this.state = {
-            showPassword: false
+            showPassword: false,
+
+            enterEmail: "",
+            enterPassword: ""
         }
     }
 
@@ -30,6 +34,18 @@ class LoginPage extends Component {
         this.setState(prevState => ({
             showPassword: !prevState.showPassword
         }));
+    }
+
+    async loginUsers() {
+        event.preventDefault();
+
+        console.log(this.state.enterEmail + this.state.enterPassword);
+
+        try {
+            
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     render() {
@@ -61,18 +77,29 @@ class LoginPage extends Component {
                     <h1>Login Account Page</h1>
                     <div style={{ width: "35%", height: "50%", backgroundColor: "white", padding: "3%", textAlign: "center" }}>
                         <Form>
+
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                 <Form.Label>Email Address</Form.Label>
-                                <Form.Control type="email" placeholder="Enter Email Address" />
+                                <Form.Control
+                                    type="email"
+                                    placeholder="Enter Email Address"
+                                    value={this.state.enterEmail}
+                                    onChange={(e) => { this.setState({ enterEmail: e.target.value }) }} />
                             </Form.Group>
+
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                 <Form.Label>Password</Form.Label><br />
                                 <span style={{ alignItems: "center", display: "inline-flex", width: "100%" }}>
-                                    <Form.Control type={this.state.showPassword ? "text" : "password"} placeholder="Enter Password" />
+                                    <Form.Control
+                                        type={this.state.showPassword ? "text" : "password"}
+                                        placeholder="Enter Password"
+                                        value={this.state.enterPassword}
+                                        onChange={(e) => { this.setState({ enterPassword: e.target.value }) }} />
                                     <FontAwesomeIcon icon={this.state.showPassword ? faEyeSlash : faEye} style={{ fontSize: "20px", padding: "2%", cursor: "pointer" }} onClick={this.togglePasswordVisibility} />
                                 </span>
                             </Form.Group><br /><br /><br />
-                            <Button variant="secondary">Login Account</Button>
+
+                            <Button variant="secondary" onClick={this.loginUsers} type="submit">Login Account</Button>
                         </Form>
                     </div>
                 </div>

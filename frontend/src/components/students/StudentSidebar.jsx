@@ -52,7 +52,8 @@ class StudentSidebar extends Component {
                     </Offcanvas.Header>
                     <Offcanvas.Body>
                         <div style={{textAlign: "center"}}>
-                            <img src={profileImage[1]} alt="" onClick={this.handleShow} /><br/><br/><br/>
+                            <img src={profileImage[1]} alt="" onClick={this.handleShow} /><br/>
+                            <h5>{this.state.LAfirstname} {this.state.LAlastname}</h5><br/><br/><br/>
                             <Button variant="danger" onClick={this.handleLogout}>Logout Account</Button>
                         </div>
                     </Offcanvas.Body>
