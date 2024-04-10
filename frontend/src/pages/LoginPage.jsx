@@ -53,29 +53,17 @@ class LoginPage extends Component {
                 (response) => {
                     console.log("Server Response", response.data.user);
 
-                    if (response.data.user.role === "student") {
-                        sessionStorage.setItem("firstname", response.data.user.firstname);
-                        sessionStorage.setItem("lastname", response.data.user.lastname);
-                        sessionStorage.setItem("email", response.data.user.email);
-                        sessionStorage.setItem("password", response.data.user.password);
-                        sessionStorage.setItem("role", response.data.user.role);
+                    sessionStorage.setItem("firstname", response.data.user.firstname);
+                    sessionStorage.setItem("lastname", response.data.user.lastname);
+                    sessionStorage.setItem("email", response.data.user.email);
+                    sessionStorage.setItem("password", response.data.user.password);
+                    sessionStorage.setItem("role", response.data.user.role);
 
+                    if (response.data.user.role === "student") {
                         this.props.history.push('/StudentDashboard');
                     } else if (response.data.user.role === "teacher") {
-                        sessionStorage.setItem("firstname", response.data.user.firstname);
-                        sessionStorage.setItem("lastname", response.data.user.lastname);
-                        sessionStorage.setItem("email", response.data.user.email);
-                        sessionStorage.setItem("password", response.data.user.password);
-                        sessionStorage.setItem("role", response.data.user.role);
-
                         this.props.history.push('/TeacherDashboard');
                     } else {
-                        sessionStorage.setItem("firstname", response.data.user.firstname);
-                        sessionStorage.setItem("lastname", response.data.user.lastname);
-                        sessionStorage.setItem("email", response.data.user.email);
-                        sessionStorage.setItem("password", response.data.user.password);
-                        sessionStorage.setItem("role", response.data.user.role);
-
                         this.props.history.push('/AdminDashboard');
                     }
                 }

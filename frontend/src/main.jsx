@@ -9,6 +9,7 @@ import RegisterPage from './pages/RegisterPage.jsx'
 import StudentDashboard from './pages/students/StudentDashboard.jsx'
 import TeacherDashboard from './pages/teachers/TeacherDashboard.jsx'
 import AdminDashboard from './pages/admins/AdminDashboard.jsx'
+import ProtectedRoute from './ProtectedRoute.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <div>
@@ -17,9 +18,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Route path='/LoginPage' component={LoginPage} />
       <Route path='/RegisterPage' component={RegisterPage} />
 
-      <Route path='/StudentDashboard' component={StudentDashboard} />
-      <Route path='/TeacherDashboard' component={TeacherDashboard} />
-      <Route path='/AdminDashboard' component={AdminDashboard} />
+      <ProtectedRoute path='/StudentDashboard' component={StudentDashboard} role='student' />
+      <ProtectedRoute path='/TeacherDashboard' component={TeacherDashboard} role='teacher' />
+      <ProtectedRoute path='/AdminDashboard' component={AdminDashboard} role='admin' />
     </Router>
   </div>
 )
