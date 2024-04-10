@@ -53,6 +53,7 @@ class LoginPage extends Component {
                 (response) => {
                     console.log("Server Response", response.data.user);
 
+                    sessionStorage.setItem("id", response.data.user.id);
                     sessionStorage.setItem("firstname", response.data.user.firstname);
                     sessionStorage.setItem("lastname", response.data.user.lastname);
                     sessionStorage.setItem("email", response.data.user.email);

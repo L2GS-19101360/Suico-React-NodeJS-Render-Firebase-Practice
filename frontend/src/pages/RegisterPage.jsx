@@ -76,6 +76,7 @@ class RegisterPage extends Component {
                         (response) => {
                             console.log("Server Response", response.data);
 
+                            sessionStorage.setItem("id", data.id);
                             sessionStorage.setItem("firstname", data.firstname);
                             sessionStorage.setItem("lastname", data.lastname);
                             sessionStorage.setItem("email", data.email);

@@ -21,11 +21,13 @@ class StudentSetting extends Component {
             showPassword: false,
             reshowPassword: false,
 
+            userId: sessionStorage.getItem("id"),
             prevFirstname: sessionStorage.getItem("firstname"),
             prevLastname: sessionStorage.getItem("lastname"),
             prevEmail: sessionStorage.getItem("email").replace(/@gmail\.com$/, ""),
             prevPassword: sessionStorage.getItem("password"),
-            prevRePassword: sessionStorage.getItem("password")
+            prevRePassword: sessionStorage.getItem("password"),
+            userRole: sessionStorage.getItem("role")
         }
     }
 
@@ -52,13 +54,37 @@ class StudentSetting extends Component {
         }));
     }
 
-    async updateUser () {
+    async updateUser() {
         event.preventDefault();
 
         const newEmail = this.state.prevEmail + "@gmail.com"
 
-        if (this.state.prevPassword === this.state.prevRePassword){
-            console.log(this.state.prevFirstname + this.state.prevLastname + newEmail + this.state.prevPassword)
+        if (this.state.prevPassword === this.state.prevRePassword) {
+            console.log(this.state.userId + this.state.prevFirstname + this.state.prevLastname + newEmail + this.state.prevPassword + this.state.userRole);
+
+            const data = {
+                id: this.state.userId,
+                firstname: this.state.prevFirstname,
+                lastname: this.state.prevLastname,
+                email: this.state.prevEmail + "@gmail.com",
+                password: this.state.prevPassword,
+                role: this.state.userRole
+            }
+
+            axios.put(
+                `https://suico-react-nodejs-render-firebase-hj4t.onrender.com/api/users/updateUser/${this.state.userId}`, data
+            ).then(
+                (response) => {
+                    console.log("Server Response", response.data);
+
+                    sessionStorage.clear();
+                    window.location.href = "/";
+                }
+            ).catch(
+                (error) => {
+                    console.log(error);
+                }
+            );
         }
     }
 
