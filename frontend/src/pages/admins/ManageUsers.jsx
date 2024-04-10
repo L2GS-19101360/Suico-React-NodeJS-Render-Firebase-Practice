@@ -36,6 +36,20 @@ class ManageUsers extends Component {
 
     async deleteUser(userId) {
         console.log(userId);
+
+        axios.delete(
+            `https://suico-react-nodejs-render-firebase-hj4t.onrender.com/api/users/deleteUser/${userId}`
+        ).then(
+            (response) => {
+                console.log("Server Response", response.data);
+
+                window.location.reload();
+            }
+        ).catch(
+            (error) => {
+                console.log(error);
+            }
+        );
     }
 
     render() {
@@ -74,7 +88,7 @@ class ManageUsers extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {this.state.users.map(user => (
+                            {this.state.users.filter((user) => user.role !== "admin").map(user => (
                                 <tr key={user.id}>
                                     <td><img src={`https://ui-avatars.com/api/?name=${user.firstname}+${user.lastname}&background=random`} alt="" /></td>
                                     <td>{user.firstname}</td>
