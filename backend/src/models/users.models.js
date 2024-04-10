@@ -67,6 +67,17 @@ const User = {
         await db.collection("Users").doc(id.toString()).update(newData);
 
         return { message: 'User Updated' };
+    },
+
+    deleteUser: async (userId) => {
+        const userDoc = await db.collection("Users").doc(userId.toString()).get();
+        if (!userDoc.exists) {
+            throw new Error("User not found");
+        }
+
+        await db.collection("Users").doc(userId.toString()).delete();
+
+        return { message: 'User Deleted' };
     }
 };
 
