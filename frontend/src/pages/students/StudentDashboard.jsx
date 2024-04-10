@@ -21,8 +21,6 @@ class StudentDashboard extends Component {
     }
 
     render() {
-        
-
         return (
             <div>
                 <Navbar expand="lg" className="bg-body-tertiary">

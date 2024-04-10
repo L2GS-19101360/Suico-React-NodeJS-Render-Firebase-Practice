@@ -10,6 +10,9 @@ import StudentDashboard from './pages/students/StudentDashboard.jsx'
 import TeacherDashboard from './pages/teachers/TeacherDashboard.jsx'
 import AdminDashboard from './pages/admins/AdminDashboard.jsx'
 import ProtectedRoute from './ProtectedRoute.jsx'
+import StudentSetting from './pages/students/StudentSetting.jsx'
+import TeacherSetting from './pages/teachers/TeacherSetting.jsx'
+import AdminSetting from './pages/admins/AdminSetting.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <div>
@@ -21,6 +24,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <ProtectedRoute path='/StudentDashboard' component={StudentDashboard} role='student' />
       <ProtectedRoute path='/TeacherDashboard' component={TeacherDashboard} role='teacher' />
       <ProtectedRoute path='/AdminDashboard' component={AdminDashboard} role='admin' />
+
+      <ProtectedRoute path='/StudentSetting' component={StudentSetting} role='student' />
+      <ProtectedRoute path='/TeacherSetting' component={TeacherSetting} role='teacher' />
+      <ProtectedRoute path='/AdminSetting' component={AdminSetting} role='admin' />
     </Router>
   </div>
 )

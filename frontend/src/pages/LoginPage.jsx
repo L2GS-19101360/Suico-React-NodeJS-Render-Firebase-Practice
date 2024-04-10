@@ -56,7 +56,7 @@ class LoginPage extends Component {
                     sessionStorage.setItem("firstname", response.data.user.firstname);
                     sessionStorage.setItem("lastname", response.data.user.lastname);
                     sessionStorage.setItem("email", response.data.user.email);
-                    sessionStorage.setItem("password", response.data.user.password);
+                    sessionStorage.setItem("password", this.state.enterPassword);
                     sessionStorage.setItem("role", response.data.user.role);
 
                     if (response.data.user.role === "student") {

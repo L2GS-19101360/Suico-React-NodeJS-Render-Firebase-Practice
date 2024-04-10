@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Navbar, Container, Nav, Button, NavDropdown, Form, Offcanvas, OffcanvasBody } from 'react-bootstrap'
 import ClockComponent from "../ClockComponent";
+import { Link } from "react-router-dom/cjs/react-router-dom";
 
 class AdminSidebar extends Component {
 
@@ -54,6 +55,7 @@ class AdminSidebar extends Component {
                         <div style={{textAlign: "center"}}>
                             <img src={profileImage[1]} alt="" onClick={this.handleShow} /><br/>
                             <h5>{this.state.LAfirstname} {this.state.LAlastname}</h5><br/><br/><br/>
+                            <Link to='/AdminSetting' style={{textDecoration: "none", color: "black"}}><h5>User Setting Page</h5></Link><br/><br/><br/><br/>
                             <Button variant="danger" onClick={this.handleLogout}>Logout Account</Button>
                         </div>
                     </Offcanvas.Body>

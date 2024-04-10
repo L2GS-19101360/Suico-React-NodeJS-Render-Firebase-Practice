@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Navbar, Container, Nav, Button, NavDropdown, Form, Offcanvas, OffcanvasBody } from 'react-bootstrap'
 import ClockComponent from "../ClockComponent";
+import StudentSetting from "../../pages/students/StudentSetting";
+import { Link } from 'react-router-dom'
 
 class StudentSidebar extends Component {
 
@@ -54,6 +56,7 @@ class StudentSidebar extends Component {
                         <div style={{textAlign: "center"}}>
                             <img src={profileImage[1]} alt="" onClick={this.handleShow} /><br/>
                             <h5>{this.state.LAfirstname} {this.state.LAlastname}</h5><br/><br/><br/>
+                            <Link to='/StudentSetting' style={{textDecoration: "none", color: "black"}}><h5>User Setting Page</h5></Link><br/><br/><br/><br/>
                             <Button variant="danger" onClick={this.handleLogout}>Logout Account</Button>
                         </div>
                     </Offcanvas.Body>

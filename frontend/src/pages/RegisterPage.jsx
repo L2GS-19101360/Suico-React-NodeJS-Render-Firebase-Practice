@@ -11,7 +11,7 @@ class RegisterPage extends Component {
         super();
         this.toLoginPage = this.toLoginPage.bind(this);
         this.togglePasswordVisibility = this.togglePasswordVisibility.bind(this);
-        this.toggleRePasswordVisibility = this.toggleRePasswordVisibility.bind(this); // Added
+        this.toggleRePasswordVisibility = this.toggleRePasswordVisibility.bind(this); 
         this.registerUsers = this.registerUsers.bind(this)
         this.state = {
             showPassword: false,
