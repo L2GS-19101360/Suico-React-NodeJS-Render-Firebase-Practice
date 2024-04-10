@@ -28,6 +28,22 @@ const UserController = {
         } catch (error) {
             res.status(500).json({ error: error.message });
         }
+    },
+
+    updateUser: async (req, res) => {
+        try {
+            const userId = req.params.id;
+            const updateData = req.body;
+
+            if (!userId) {
+                return res.status(400).json({ error: 'User ID is required' });
+            }
+
+            await User.updateUser({ id: userId, ...updateData });
+            res.json({ message: 'User Updated' });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
     }
 };
 

@@ -47,6 +47,26 @@ const User = {
         }
 
         return userData;
+    },
+
+    updateUser: async (updateData) => {
+        const { id, firstname, lastname, email, password, role } = updateData;
+
+        const newData = {};
+
+        if (firstname !== undefined) newData.firstname = firstname;
+        if (lastname !== undefined) newData.lastname = lastname;
+        if (email !== undefined) newData.email = email;
+        if (password !== undefined) newData.password = await bcrypt.hash(password, 10);
+        if (role !== undefined) newData.role = role;
+
+        if (Object.keys(newData).length === 0) {
+            throw new Error('No fields to update');
+        }
+
+        await db.collection("Users").doc(id.toString()).update(newData);
+
+        return { message: 'User Updated' };
     }
 };
 

@@ -55,8 +55,10 @@ class StudentSetting extends Component {
     async updateUser () {
         event.preventDefault();
 
+        const newEmail = this.state.prevEmail + "@gmail.com"
+
         if (this.state.prevPassword === this.state.prevRePassword){
-            console.log(this.state.prevFirstname + this.state.prevLastname + this.state.prevEmail + this.state.prevPassword)
+            console.log(this.state.prevFirstname + this.state.prevLastname + newEmail + this.state.prevPassword)
         }
     }
 
