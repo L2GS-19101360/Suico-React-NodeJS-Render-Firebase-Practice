@@ -26,7 +26,7 @@ class AdminDashboard extends Component {
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-between">
                             <Nav>
-                                <Nav.Link>Home</Nav.Link>
+                                
                             </Nav>
                             <Nav>
                                 <ClockComponent />
@@ -37,7 +37,7 @@ class AdminDashboard extends Component {
                         </Navbar.Collapse>
                     </Container>
                 </Navbar>
-                <div style={{ padding: "3%" }}>
+                <div style={{ padding: "1%" }}>
                     <h1>Admin Dashboard</h1>
                 </div>
             </div>

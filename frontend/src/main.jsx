@@ -13,6 +13,8 @@ import ProtectedRoute from './ProtectedRoute.jsx'
 import StudentSetting from './pages/students/StudentSetting.jsx'
 import TeacherSetting from './pages/teachers/TeacherSetting.jsx'
 import AdminSetting from './pages/admins/AdminSetting.jsx'
+import ManageUsers from './pages/admins/ManageUsers.jsx'
+import ApproveTeachers from './pages/admins/ApproveTeachers.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <div>
@@ -22,12 +24,15 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Route path='/RegisterPage' component={RegisterPage} />
 
       <ProtectedRoute path='/StudentDashboard' component={StudentDashboard} role='student' />
-      <ProtectedRoute path='/TeacherDashboard' component={TeacherDashboard} role='teacher' />
-      <ProtectedRoute path='/AdminDashboard' component={AdminDashboard} role='admin' />
-
       <ProtectedRoute path='/StudentSetting' component={StudentSetting} role='student' />
+
+      <ProtectedRoute path='/TeacherDashboard' component={TeacherDashboard} role='teacher' />
       <ProtectedRoute path='/TeacherSetting' component={TeacherSetting} role='teacher' />
+
+      <ProtectedRoute path='/AdminDashboard' component={AdminDashboard} role='admin' />
       <ProtectedRoute path='/AdminSetting' component={AdminSetting} role='admin' />
+      <ProtectedRoute path='/ManageUsers' component={ManageUsers} role='admin' />
+      <ProtectedRoute path='/ApproveTeachers' component={ApproveTeachers} role='admin' />
     </Router>
   </div>
 )

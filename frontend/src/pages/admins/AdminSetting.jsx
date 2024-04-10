@@ -113,7 +113,7 @@ class StudentSetting extends Component {
                     </Container>
                 </Navbar>
                 <div style={{ display: 'inline-flex' }}>
-                    <div style={{ width: '300px', backgroundColor: '#f0f0f0', height: '120vh', padding: '1%' }}>
+                    <div style={{ width: '300px', backgroundColor: '#f0f0f0', height: '115vh', padding: '1%' }}>
                         <ClockComponent />
                         Admin Settings Page<br /><br /><br /><br />
                         <div style={{ textAlign: 'center' }}>
@@ -121,7 +121,7 @@ class StudentSetting extends Component {
                             <Button variant="danger" onClick={this.handleLogout}>Logout Account</Button>
                         </div>
                     </div>
-                    <div style={{ width: '175.5vh', backgroundColor: 'white', height: '120vh', padding: '3%' }}>
+                    <div style={{ width: '175.5vh', backgroundColor: 'white', height: '115vh', padding: '1%' }}>
                         <h1>User Setting</h1>
                         <img src={profileImage[0]} alt="" />
                         <br /><br />

@@ -2,15 +2,12 @@ import React, { Component } from "react";
 import ClockComponent from "../../components/ClockComponent";
 import { Navbar, Container, Nav, Button, NavDropdown, Form } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import StudentSidebar from '../../components/students/StudentSidebar'
+import AdminSidebar from '../../components/admins/AdminSidebar'
 
-class StudentDashboard extends Component {
+class ApproveTeachers extends Component {
 
     constructor() {
         super();
-        this.state = {
-            
-        }
     }
 
     componentDidMount() {
@@ -29,19 +26,19 @@ class StudentDashboard extends Component {
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-between">
                             <Nav>
-                                <Nav.Link>Home</Nav.Link>
+                                
                             </Nav>
                             <Nav>
                                 <ClockComponent />
                             </Nav>
                             <Nav>
-                                <StudentSidebar />
+                                <AdminSidebar />
                             </Nav>
                         </Navbar.Collapse>
                     </Container>
                 </Navbar>
                 <div style={{ padding: "1%" }}>
-                    <h1>Student Dashboard</h1>
+                    <h1>Approve Teacher Page</h1>
                 </div>
             </div>
         );
@@ -49,4 +46,4 @@ class StudentDashboard extends Component {
 
 }
 
-export default StudentDashboard
+export default ApproveTeachers

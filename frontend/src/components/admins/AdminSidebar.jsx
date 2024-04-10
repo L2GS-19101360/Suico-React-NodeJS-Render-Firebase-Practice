@@ -54,8 +54,11 @@ class AdminSidebar extends Component {
                     <Offcanvas.Body>
                         <div style={{textAlign: "center"}}>
                             <img src={profileImage[1]} alt="" onClick={this.handleShow} /><br/>
-                            <h5>{this.state.LAfirstname} {this.state.LAlastname}</h5><br/><br/><br/>
-                            <Link to='/AdminSetting' style={{textDecoration: "none", color: "black"}}><h5>User Setting Page</h5></Link><br/><br/><br/><br/>
+                            <h5>{this.state.LAfirstname} {this.state.LAlastname}</h5><br/><br />
+                            <Link to='/AdminDashboard' style={{textDecoration: "none", color: "black"}}><h5>Dashboard</h5></Link>
+                            <Link to='/ManageUsers' style={{textDecoration: "none", color: "black"}}><h5>Manage User Page</h5></Link>
+                            <Link to='/ApproveTeachers' style={{textDecoration: "none", color: "black"}}><h5>Teacher Approval Page</h5></Link>
+                            <Link to='/AdminSetting' style={{textDecoration: "none", color: "black"}}><h5>User Setting Page</h5></Link><br/><br />
                             <Button variant="danger" onClick={this.handleLogout}>Logout Account</Button>
                         </div>
                     </Offcanvas.Body>

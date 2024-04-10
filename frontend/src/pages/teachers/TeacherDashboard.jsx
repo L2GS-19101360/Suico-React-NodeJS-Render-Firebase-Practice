@@ -37,7 +37,7 @@ class TeacherDashboard extends Component {
                         </Navbar.Collapse>
                     </Container>
                 </Navbar>
-                <div style={{ padding: "3%" }}>
+                <div style={{ padding: "1%" }}>
                     <h1>Teacher Dashboard</h1>
                 </div>
             </div>
