@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import StudentDashboard from "./StudentDashboard";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import axios from "axios";
 
 class StudentSetting extends Component {
 
@@ -12,6 +13,7 @@ class StudentSetting extends Component {
         super();
         this.togglePasswordVisibility = this.togglePasswordVisibility.bind(this);
         this.toggleRePasswordVisibility = this.toggleRePasswordVisibility.bind(this);
+        this.updateUser = this.updateUser.bind(this);
         this.state = {
             LAfirstname: sessionStorage.getItem("firstname"),
             LAlastname: sessionStorage.getItem("lastname"),
@@ -48,6 +50,14 @@ class StudentSetting extends Component {
         this.setState(prevState => ({
             reshowPassword: !prevState.reshowPassword
         }));
+    }
+
+    async updateUser () {
+        event.preventDefault();
+
+        if (this.state.prevPassword === this.state.prevRePassword){
+            console.log(this.state.prevFirstname + this.state.prevLastname + this.state.prevEmail + this.state.prevPassword)
+        }
     }
 
     render() {
@@ -93,6 +103,8 @@ class StudentSetting extends Component {
                                 <Form.Control
                                     type="text"
                                     placeholder={this.state.prevFirstname}
+                                    value={this.state.prevFirstname}
+                                    onChange={(e) => { this.setState({ prevFirstname: e.target.value }) }}
                                 />
                             </Form.Group>
 
@@ -101,6 +113,8 @@ class StudentSetting extends Component {
                                 <Form.Control
                                     type="text"
                                     placeholder={this.state.prevLastname}
+                                    value={this.state.prevLastname}
+                                    onChange={(e) => { this.setState({ prevLastname: e.target.value }) }}
                                 />
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -109,9 +123,9 @@ class StudentSetting extends Component {
                                 <InputGroup className="mb-3">
                                     <Form.Control
                                         placeholder={this.state.prevEmail}
-                                        aria-label="Enter Email Address"
-                                        aria-describedby="basic-addon2"
                                         type="text"
+                                        value={this.state.prevEmail}
+                                        onChange={(e) => { this.setState({ prevEmail: e.target.value }) }}
                                     />
                                     <InputGroup.Text id="basic-addon2">@gmail.com</InputGroup.Text>
                                 </InputGroup>
@@ -124,6 +138,8 @@ class StudentSetting extends Component {
                                     <Form.Control
                                         type={this.state.showPassword ? "text" : "password"}
                                         placeholder={this.state.prevPassword}
+                                        value={this.state.prevPassword}
+                                        onChange={(e) => { this.setState({ prevPassword: e.target.value }) }}
                                     />
                                     <FontAwesomeIcon icon={this.state.showPassword ? faEyeSlash : faEye} style={{ fontSize: "20px", padding: "2%", cursor: "pointer" }} onClick={this.togglePasswordVisibility} />
                                 </span>
@@ -136,12 +152,14 @@ class StudentSetting extends Component {
                                     <Form.Control
                                         type={this.state.reshowPassword ? "text" : "password"}
                                         placeholder={this.state.prevRePassword}
+                                        value={this.state.prevRePassword}
+                                        onChange={(e) => { this.setState({ prevRePassword: e.target.value }) }}
                                     />
                                     <FontAwesomeIcon icon={this.state.reshowPassword ? faEyeSlash : faEye} style={{ fontSize: "20px", padding: "2%", cursor: "pointer" }} onClick={this.toggleRePasswordVisibility} />
                                 </span>
 
                             </Form.Group>
-                            <Button variant="warning" type="submit">Register Account</Button>
+                            <Button variant="warning" type="submit" onClick={this.updateUser}>Register Account</Button>
                         </Form>
                     </div>
                 </div>
