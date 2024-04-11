@@ -77,23 +77,16 @@ class RegisterPage extends Component {
                         'https://suico-react-nodejs-render-firebase-hj4t.onrender.com/api/users/registerUser', data
                     ).then(
                         (response) => {
-                            console.log("Server Response", response.data); // Check the structure of response.data
+                            console.log("Server Response", response.data.userId);
 
-                            // Check if response.data contains the userId property
-                            if (response.data && response.data.userId) {
-                                console.log("Server Response userId", response.data.userId);
+                            // sessionStorage.setItem("id", response.data.user.userId);
+                            sessionStorage.setItem("firstname", data.firstname);
+                            sessionStorage.setItem("lastname", data.lastname);
+                            sessionStorage.setItem("email", data.email);
+                            sessionStorage.setItem("password", data.password);
+                            sessionStorage.setItem("role", data.role);
 
-                                sessionStorage.setItem("id", response.data.userId);
-                                sessionStorage.setItem("firstname", data.firstname);
-                                sessionStorage.setItem("lastname", data.lastname);
-                                sessionStorage.setItem("email", data.email);
-                                sessionStorage.setItem("password", data.password);
-                                sessionStorage.setItem("role", data.role);
-
-                                // this.props.history.push('/StudentDashboard');
-                            } else {
-                                console.log("userId not found in response data");
-                            }
+                            // this.props.history.push('/StudentDashboard');
                         }
                     ).catch(
                         (error) => {
