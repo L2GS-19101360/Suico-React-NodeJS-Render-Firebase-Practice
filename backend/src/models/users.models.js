@@ -11,7 +11,7 @@ const db = admin.firestore();
 const User = {
     getAll: async () => {
         const querySnapshot = await db.collection("Users").get();
-        return querySnapshot.docs.map(doc => doc.data());
+        return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     },
 
     createUser: async (userData) => {
