@@ -78,14 +78,15 @@ class RegisterPage extends Component {
                     ).then(
                         (response) => {
                             console.log("Server Response", response.data.userId);
-                    
+                            console.log("Server Response", response.data.message);
+
                             sessionStorage.setItem("id", response.data.userId);
                             sessionStorage.setItem("firstname", data.firstname);
                             sessionStorage.setItem("lastname", data.lastname);
                             sessionStorage.setItem("email", data.email);
                             sessionStorage.setItem("password", data.password);
                             sessionStorage.setItem("role", data.role);
-                    
+
                             // this.props.history.push('/StudentDashboard');
                         }
                     ).catch(
