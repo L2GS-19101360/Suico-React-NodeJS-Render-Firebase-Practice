@@ -77,17 +77,23 @@ class RegisterPage extends Component {
                         'https://suico-react-nodejs-render-firebase-hj4t.onrender.com/api/users/registerUser', data
                     ).then(
                         (response) => {
-                            console.log("Server Response", response.data.userId);
-                            console.log("Server Response", response.data.message);
+                            console.log("Server Response", response.data); // Check the structure of response.data
 
-                            sessionStorage.setItem("id", response.data.userId);
-                            sessionStorage.setItem("firstname", data.firstname);
-                            sessionStorage.setItem("lastname", data.lastname);
-                            sessionStorage.setItem("email", data.email);
-                            sessionStorage.setItem("password", data.password);
-                            sessionStorage.setItem("role", data.role);
+                            // Check if response.data contains the userId property
+                            if (response.data && response.data.userId) {
+                                console.log("Server Response userId", response.data.userId);
 
-                            // this.props.history.push('/StudentDashboard');
+                                sessionStorage.setItem("id", response.data.userId);
+                                sessionStorage.setItem("firstname", data.firstname);
+                                sessionStorage.setItem("lastname", data.lastname);
+                                sessionStorage.setItem("email", data.email);
+                                sessionStorage.setItem("password", data.password);
+                                sessionStorage.setItem("role", data.role);
+
+                                // this.props.history.push('/StudentDashboard');
+                            } else {
+                                console.log("userId not found in response data");
+                            }
                         }
                     ).catch(
                         (error) => {

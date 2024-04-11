@@ -15,9 +15,11 @@ const User = {
     },
 
     createUser: async (userData) => {
+
         const hashedPassword = await bcrypt.hash(userData.password, 10);
 
         const data = {
+            // id: userData.id,
             firstname: userData.firstname,
             lastname: userData.lastname,
             email: userData.email,
@@ -27,9 +29,9 @@ const User = {
 
         const docRef = await db.collection("Users").add(data);
 
-        const userId = docRef.id;
+        console.log("User ID:", docRef.id);
 
-        return userId;
+        return { userId: docRef.id, message: 'User Created' };
     },
 
     loginUser: async (loginData) => {
