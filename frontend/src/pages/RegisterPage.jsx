@@ -11,7 +11,7 @@ class RegisterPage extends Component {
         super();
         this.toLoginPage = this.toLoginPage.bind(this);
         this.togglePasswordVisibility = this.togglePasswordVisibility.bind(this);
-        this.toggleRePasswordVisibility = this.toggleRePasswordVisibility.bind(this); 
+        this.toggleRePasswordVisibility = this.toggleRePasswordVisibility.bind(this);
         this.registerUsers = this.registerUsers.bind(this)
         this.state = {
             showPassword: false,
@@ -58,11 +58,11 @@ class RegisterPage extends Component {
         try {
             const response = await axios.get('https://suico-react-nodejs-render-firebase-hj4t.onrender.com/api/users');
 
-            console.log(response.data.length)
+            // console.log(response.data.length)
 
             this.setState({ newId: parseInt(response.data.length, 10) + 1 }, () => {
                 if (this.state.newPassword === this.state.rePassword) {
-                    console.log(this.state.newId + this.state.newFirstname + this.state.newLastname + email + this.state.newPassword);
+                    console.log(this.state.newFirstname + this.state.newLastname + email + this.state.newPassword);
 
                     const data = {
                         // id: this.state.newId,
@@ -79,14 +79,14 @@ class RegisterPage extends Component {
                         (response) => {
                             console.log("Server Response", response.data);
 
-                            sessionStorage.setItem("id", data.id);
+                            sessionStorage.setItem("id", response.data.user.userId);
                             sessionStorage.setItem("firstname", data.firstname);
                             sessionStorage.setItem("lastname", data.lastname);
                             sessionStorage.setItem("email", data.email);
                             sessionStorage.setItem("password", data.password);
                             sessionStorage.setItem("role", data.role);
 
-                            this.props.history.push('/StudentDashboard');
+                            // this.props.history.push('/StudentDashboard');
                         }
                     ).catch(
                         (error) => {

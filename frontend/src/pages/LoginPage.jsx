@@ -51,18 +51,19 @@ class LoginPage extends Component {
                 'https://suico-react-nodejs-render-firebase-hj4t.onrender.com/api/users/loginUser', data
             ).then(
                 (response) => {
-                    console.log("Server Response", response.data.user);
+                    console.log("Server Response", response.data.user.userId);
+                    console.log("Server Response", response.data.user.userData);
 
-                    sessionStorage.setItem("id", response.data.user.id);
-                    sessionStorage.setItem("firstname", response.data.user.firstname);
-                    sessionStorage.setItem("lastname", response.data.user.lastname);
-                    sessionStorage.setItem("email", response.data.user.email);
+                    sessionStorage.setItem("id", response.data.user.userId);
+                    sessionStorage.setItem("firstname", response.data.user.userData.firstname);
+                    sessionStorage.setItem("lastname", response.data.user.userData.lastname);
+                    sessionStorage.setItem("email", response.data.user.userData.email);
                     sessionStorage.setItem("password", this.state.enterPassword);
-                    sessionStorage.setItem("role", response.data.user.role);
+                    sessionStorage.setItem("role", response.data.user.userData.role);
 
-                    if (response.data.user.role === "student") {
+                    if (response.data.user.userData.role === "student") {
                         this.props.history.push('/StudentDashboard');
-                    } else if (response.data.user.role === "teacher") {
+                    } else if (response.data.user.userData.role === "teacher") {
                         this.props.history.push('/TeacherDashboard');
                     } else {
                         this.props.history.push('/AdminDashboard');
