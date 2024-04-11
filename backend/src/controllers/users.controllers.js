@@ -48,7 +48,7 @@ const UserController = {
 
     deleteUser: async (req, res) => {
         try {
-            const userId = req.params.id;
+            const userId = req.params.input;
 
             if (!userId) {
                 return res.status(400).json({ error: 'User ID is required' });
