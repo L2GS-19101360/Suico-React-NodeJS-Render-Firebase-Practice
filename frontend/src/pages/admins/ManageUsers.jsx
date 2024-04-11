@@ -37,19 +37,19 @@ class ManageUsers extends Component {
     async deleteUser(userId) {
         console.log(userId);
 
-        axios.delete(
-            `https://suico-react-nodejs-render-firebase-hj4t.onrender.com/api/users/deleteUser/${userId}`
-        ).then(
-            (response) => {
-                console.log("Server Response", response.data);
+        // axios.delete(
+        //     `https://suico-react-nodejs-render-firebase-hj4t.onrender.com/api/users/deleteUser/${userId}`
+        // ).then(
+        //     (response) => {
+        //         console.log("Server Response", response.data);
 
-                window.location.reload();
-            }
-        ).catch(
-            (error) => {
-                console.log(error);
-            }
-        );
+        //         window.location.reload();
+        //     }
+        // ).catch(
+        //     (error) => {
+        //         console.log(error);
+        //     }
+        // );
     }
 
     render() {

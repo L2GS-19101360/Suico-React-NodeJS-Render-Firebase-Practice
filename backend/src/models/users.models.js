@@ -73,12 +73,14 @@ const User = {
     },
 
     deleteUser: async (userId) => {
-        const userDoc = await db.collection("Users").doc(userId.toString()).get();
+        const userRef = db.collection("Users").doc(userId);
+
+        const userDoc = await userRef.get();
         if (!userDoc.exists) {
             throw new Error("User not found");
         }
 
-        await db.collection("Users").doc(userId.toString()).delete();
+        await userRef.delete();
 
         return { message: 'User Deleted' };
     }
