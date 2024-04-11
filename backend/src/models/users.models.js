@@ -67,7 +67,7 @@ const User = {
             throw new Error('No fields to update');
         }
 
-        await db.collection("Users").doc(id.toString()).update(newData);
+        await db.collection("Users").doc(id).update(newData);
 
         return { message: 'User Updated' };
     },

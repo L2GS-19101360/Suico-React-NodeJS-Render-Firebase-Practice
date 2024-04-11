@@ -32,7 +32,7 @@ const UserController = {
 
     updateUser: async (req, res) => {
         try {
-            const userId = req.params.id;
+            const userId = req.params.input;
             const updateData = req.body;
 
             if (!userId) {
