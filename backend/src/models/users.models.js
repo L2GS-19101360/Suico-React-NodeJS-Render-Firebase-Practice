@@ -40,13 +40,14 @@ const User = {
 
         const userDoc = userSnapshot.docs[0];
         const userData = userDoc.data();
+        const userId = userDoc.id;
 
         const passwordMatch = await bcrypt.compare(password, userData.password);
         if (!passwordMatch) {
             throw new Error("Incorrect password");
         }
 
-        return userData;
+        return { userData, userId };
     },
 
     updateUser: async (updateData) => {
