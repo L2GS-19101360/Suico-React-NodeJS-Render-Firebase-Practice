@@ -27,7 +27,7 @@ const User = {
             role: userData.role
         };
 
-        return db.collection("Users").doc(data.id.toString()).set(data);
+        return db.collection("Users").add(data);
     },
 
     loginUser: async (loginData) => {
