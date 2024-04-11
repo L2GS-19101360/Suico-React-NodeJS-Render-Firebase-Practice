@@ -58,15 +58,14 @@ class RegisterPage extends Component {
         try {
             const response = await axios.get('https://suico-react-nodejs-render-firebase-hj4t.onrender.com/api/users');
 
-            const newUser = response.data[response.data.length - 1];
-            console.log(typeof newUser.id)
+            console.log(response.data.length)
 
-            this.setState({ newId: parseInt(newUser.id, 10) + 1 }, () => {
+            this.setState({ newId: parseInt(response.data.length, 10) + 1 }, () => {
                 if (this.state.newPassword === this.state.rePassword) {
                     console.log(this.state.newId + this.state.newFirstname + this.state.newLastname + email + this.state.newPassword);
 
                     const data = {
-                        id: this.state.newId,
+                        // id: this.state.newId,
                         firstname: this.state.newFirstname,
                         lastname: this.state.newLastname,
                         email: email,

@@ -19,7 +19,7 @@ const User = {
         const hashedPassword = await bcrypt.hash(userData.password, 10);
 
         const data = {
-            id: userData.id,
+            // id: userData.id,
             firstname: userData.firstname,
             lastname: userData.lastname,
             email: userData.email,
