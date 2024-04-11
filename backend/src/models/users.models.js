@@ -15,9 +15,8 @@ const User = {
     },
 
     createUser: async (userData) => {
-
         const hashedPassword = await bcrypt.hash(userData.password, 10);
-
+    
         const data = {
             firstname: userData.firstname,
             lastname: userData.lastname,
@@ -29,7 +28,7 @@ const User = {
         const docRef = await db.collection("Users").add(data);
 
         const userId = docRef.id;
-
+    
         return { userId, message: 'User Created' };
     },
 
