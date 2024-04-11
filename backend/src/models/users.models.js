@@ -27,7 +27,9 @@ const User = {
 
         const docRef = await db.collection("Users").add(data);
 
-        return { userId: docRef.id, message: 'User Created' };
+        const userId = docRef.id;
+
+        return userId;
     },
 
     loginUser: async (loginData) => {
