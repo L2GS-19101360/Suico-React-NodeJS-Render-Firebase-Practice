@@ -14,6 +14,17 @@ const User = {
         return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     },
 
+    getUserById: async (userId) => {
+        const userDoc = await db.collection("Users").doc(userId).get();
+
+        if (!userDoc.exists) {
+            throw new Error("User not found");
+        }
+
+        const userData = userDoc.data();
+        return { userId, userData };
+    },
+
     createUser: async (userData) => {
 
         const hashedPassword = await bcrypt.hash(userData.password, 10);

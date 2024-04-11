@@ -10,6 +10,16 @@ const UserController = {
         }
     },
 
+    getUserById: async (req, res) => {
+        try {
+            const userId = req.params.input;
+            const user = await User.getUserById(userId);
+            res.json(user);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
+
     createUser: async (req, res) => {
         try {
             const userData = req.body;
